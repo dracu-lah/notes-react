@@ -45,7 +45,7 @@ const Card = ({ constraintsRef, index }) => {
     initial: { x: 0, y: 0, opacity: 0 },
     animate: {
       y: index * 10, // Vertical offset for stacking
-      x: index * 10, // Vertical offset for stacking
+      x: index * 15, // Vertical offset for stacking
       opacity: 1,
     },
   };
