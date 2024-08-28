@@ -1,8 +1,12 @@
-# React + Vite
+# Card Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The `Card` component is a draggable note-taking UI element that allows users to create and save notes. Each card can be dragged around, and its content is saved locally in the browser using `localStorage`. This component also provides visual feedback on the note's save status.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- **Create Notes**: Type text into the textarea to create or edit a note.
+- **Read Notes**: Notes are stored and retrieved from `localStorage`, so they persist across page reloads.
+- **Drag Notes**: Notes can be dragged around within the constraints defined by the parent container.
+- **Save Feedback**: Visual indicators show whether the note is being saved, has been saved, or needs content.
