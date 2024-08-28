@@ -2,7 +2,13 @@ import React from "react";
 
 const ClearButton = () => {
   return (
-    <button className="flex justify-center items-center bg-red-500 hover:bg-red-600 size-16  rounded-lg">
+    <button
+      onClick={() => {
+        localStorage.clear();
+        window.location.reload();
+      }}
+      className="flex justify-center items-center bg-red-500 hover:bg-red-600 size-16  rounded-lg"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
