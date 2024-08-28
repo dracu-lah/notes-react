@@ -1,7 +1,7 @@
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
 
-const Card = ({ constraintsRef }) => {
+const Card = ({ constraintsRef, index }) => {
   const controls = useAnimationControls();
   const [note, setNote] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +48,7 @@ const Card = ({ constraintsRef }) => {
       variants={{ initial: { scale: 0 } }}
       initial="initial"
       whileInView={{ scale: 1 }}
-      className="flex flex-col items-center justify-between h-[240px] w-[180px] rounded-3xl overflow-hidden"
+      className={` flex flex-col items-center justify-between h-[240px] w-[180px] rounded-3xl overflow-hidden absolute `}
       animate={controls}
     >
       <textarea
