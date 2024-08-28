@@ -1,8 +1,7 @@
-import { motion, useAnimationControls } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Card = ({ constraintsRef, index }) => {
-  const controls = useAnimationControls();
   const [note, setNote] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -41,15 +40,24 @@ const Card = ({ constraintsRef, index }) => {
     return "bg-blue-800"; // Blue background for "Stop to Save"
   };
 
+  // Define the stacking variant
+  const stackVariants = {
+    initial: { x: 0, y: 0, opacity: 0 },
+    animate: {
+      y: index * 10, // Vertical offset for stacking
+      x: index * 10, // Vertical offset for stacking
+      opacity: 1,
+    },
+  };
+
   return (
     <motion.div
       drag
       dragConstraints={constraintsRef}
-      variants={{ initial: { scale: 0 } }}
+      variants={stackVariants}
       initial="initial"
-      whileInView={{ scale: 1 }}
-      className={` flex flex-col items-center justify-between h-[240px] w-[180px] rounded-3xl overflow-hidden absolute `}
-      animate={controls}
+      animate="animate"
+      className={`absolute border border-zinc-900/10 flex flex-col items-center justify-between h-[240px] w-[180px] rounded-3xl overflow-hidden`}
     >
       <textarea
         className="outline-none text-sm p-6 flex-1 w-full duration-300 max-w-full bg-zinc-700 focus:bg-zinc-800"
@@ -61,7 +69,7 @@ const Card = ({ constraintsRef, index }) => {
       <span
         className={`${bgColor()} outline-none text-center duration-300 font-mono w-full text-zinc-200 bottom-0 py-4`}
       >
-        <p className={`${isLoading && "animate-pulse"}`}>{statusText()}</p>
+        <p className={`${isLoading ? "animate-pulse" : ""}`}>{statusText()}</p>
       </span>
     </motion.div>
   );
